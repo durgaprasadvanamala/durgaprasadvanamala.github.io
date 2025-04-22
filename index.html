@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durga Prasad Vanamala - Cybersecurity Portfolio</title>
+    <style>
+        :root {
+            --primary: #2a2f4f;
+            --secondary: #4b55c0;
+            --accent: #6c72cb;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #198754;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2a2f4f, #6c72cb);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav a {
+            color: white;
+            padding: 1rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: var(--secondary);
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .project-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .project-emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            background-color: #e9ecef;
+            color: var(--dark);
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            flex: 1 1 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1rem;
+            margin-left: -1rem;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+        }
+        
+        .cert-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cert-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .education-item, .activity-item {
+            margin-bottom: 2rem;
+        }
+        
+        .education-institution {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .education-details {
+            display: flex;
+            justify-content: space-between;
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 1rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container profile-container">
+            <img src="images/durga prasad.jpg" alt="Durga Prasad Vanamala" class="profile-image" />
+            <div>
+                <h1>Durga Prasad Vanamala</h1>
+                <p>Cybersecurity Enthusiast | Developer | Problem Solver</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📍 Miryalaguda, Telangana, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📧 vanamaladurgaprasad@outlook.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📞 +91-6302652748</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#activities">Activities</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am a highly motivated <span class="highlight">Computer Science and Engineering student</span> at <span class="highlight">Lovely Professional University</span>, specializing in <span class="highlight">Cybersecurity</span>. With a strong foundation in programming, secure coding practices, and hands-on project development, I bring a blend of analytical thinking, technical skills, and creativity.</p>
+            
+            <p>My passion lies in building secure systems and applications, identifying vulnerabilities, and developing tools that enhance system and network security. From developing a <span class="highlight">Network Security Scanner</span> using Nmap and Scapy, to creating a <span class="highlight">Password Manager</span> with AES-256 encryption and bcrypt hashing, my work is deeply rooted in secure development and data protection.</p>
+            
+            <p>I am also experienced in web technologies, software development, and data structures. I continuously upgrade my skills through certifications, hackathons, and workshops, and I enjoy working in collaborative environments where innovation and learning thrive.</p>
+        </div>
+    </section>
+    
+    <section id="projects" style="background-color: #f0f2f5;">
+        <div class="container">
+            <h2>Projects</h2>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><span class="project-emoji">🔐</span>Network Security Scanner</h3>
+                    <span class="project-date">December 2024</span>
+                </div>
+                <div>
+                    <p><strong>Tools & Tech:</strong></p>
+                    <div>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Nmap</span>
+                        <span class="tech-tag">Scapy</span>
+                        <span class="tech-tag">Socket Programming</span>
+                    </div>
+                </div>
+                <p><strong>Summary:</strong> Designed and developed a comprehensive network vulnerability scanner capable of identifying security loopholes in local and remote networks.</p>
+                <p><strong>Key Features & Contributions:</strong></p>
+                <ul>
+                    <li>Implemented IP scanning and port scanning functionality to detect open, filtered, or closed ports.</li>
+                    <li>Used Nmap and Scapy libraries to collect detailed metadata about network services and their configurations.</li>
+                    <li>Detected misconfigurations, unsecured services, and version-based vulnerabilities in real-time.</li>
+                    <li>Generated automated security audit reports with risk severity ratings and mitigation suggestions to improve overall network defense posture.</li>
+                </ul>
+                <p><strong>Impact:</strong> This tool aids system administrators and ethical hackers in performing internal audits and identifying weaknesses before they can be exploited.</p>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><span class="project-emoji">🔑</span>Password Manager</h3>
+                    <span class="project-date">May 2024</span>
+                </div>
+                <div>
+                    <p><strong>Tools & Tech:</strong></p>
+                    <div>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyCryptodome</span>
+                        <span class="tech-tag">bcrypt</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Tkinter</span>
+                    </div>
+                </div>
+                <p><strong>Summary:</strong> Developed a cross-platform password management system for securely storing and managing user credentials.</p>
+                <p><strong>Key Features & Contributions:</strong></p>
+                <ul>
+                    <li>Encrypted user credentials using AES-256 encryption to ensure maximum confidentiality.</li>
+                    <li>Secured user authentication with bcrypt hashing, making brute-force attacks extremely difficult.</li>
+                    <li>Integrated a password generator to encourage strong, random password usage.</li>
+                    <li>Developed both CLI and GUI (Tkinter-based) interfaces for easy interaction by technical and non-technical users.</li>
+                    <li>Implemented a master password system to restrict unauthorized access and decryption of stored data.</li>
+                </ul>
+                <p><strong>Impact:</strong> Helped improve password hygiene and user security by promoting safe password storage and access methods, especially for non-tech-savvy individuals.</p>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><span class="project-emoji">🔐</span>Simple Encryption Tool</h3>
+                    <span class="project-date">January 2024</span>
+                </div>
+                <div>
+                    <p><strong>Tools & Tech:</strong></p>
+                    <div>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyCryptodome</span>
+                        <span class="tech-tag">Tkinter</span>
+                        <span class="tech-tag">Base64</span>
+                    </div>
+                </div>
+                <p><strong>Summary:</strong> Built a lightweight encryption/decryption utility that protects sensitive files and textual data using modern cryptographic algorithms.</p>
+                <p><strong>Key Features & Contributions:</strong></p>
+                <ul>
+                    <li>Used AES-256 encryption to provide industry-standard data security.</li>
+                    <li>Created a secure key management system with base64 encoding to ensure proper encryption/decryption matching.</li>
+                    <li>Offered dual interface: command-line for developers and GUI for general users.</li>
+                    <li>Supported drag-and-drop encryption for files and instant text encryption with just a few clicks.</li>
+                </ul>
+                <p><strong>Impact:</strong> Provided an easy-to-use solution for individuals needing secure personal communication and storage in both academic and professional contexts.</p>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><span class="project-emoji">📚</span>Library Management System</h3>
+                    <span class="project-date">June 2024</span>
+                </div>
+                <div>
+                    <p><strong>Tools & Tech:</strong></p>
+                    <div>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Data Structures (Arrays)</span>
+                        <span class="tech-tag">Algorithms</span>
+                    </div>
+                </div>
+                <p><strong>Summary:</strong> Designed a high-performance, scalable library management application to streamline the tracking and circulation of books.</p>
+                <p><strong>Key Features & Contributions:</strong></p>
+                <ul>
+                    <li>Supported adding, removing, and updating book entries for libraries with up to 1000 books.</li>
+                    <li>Implemented search functionality by Book ID or Title to quickly locate items.</li>
+                    <li>Developed a book issue and return tracking system for better inventory control.</li>
+                    <li>Applied structured programming and efficient search/sort algorithms for quick access and optimized performance.</li>
+                </ul>
+                <p><strong>Impact:</strong> Served as a foundational tool to digitize library operations in small academic institutions, enhancing usability and reducing manual errors.</p>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><span class="project-emoji">🍽️</span>Restaurant Website</h3>
+                    <span class="project-date">May 2023</span>
+                </div>
+                <div>
+                    <p><strong>Tools & Tech:</strong></p>
+                    <div>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+                <p><strong>Summary:</strong> Developed a visually appealing, responsive restaurant website to enhance user engagement and digital branding.</p>
+                <p><strong>Key Features & Contributions:</strong></p>
+                <ul>
+                    <li>Built a mobile-friendly UI with flexible layouts and consistent styling using CSS and media queries.</li>
+                    <li>Designed an interactive menu showcasing items with images, descriptions, and dynamic pricing.</li>
+                    <li>Implemented smooth navigation, a detailed footer with contact info, and embedded social media links.</li>
+                    <li>Optimized loading time and ensured compatibility across devices and screen sizes.</li>
+                </ul>
+                <p><strong>Impact:</strong> Helped improve the restaurant's online presence and customer experience by offering a sleek, modern, and functional website.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>C++</li>
+                        <li>Java</li>
+                        <li>C</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web & Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Bootstrap</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>NodeJS</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Security Tools & Concepts</h3>
+                    <ul class="skill-list">
+                        <li>Nmap</li>
+                        <li>Scapy</li>
+                        <li>AES-256</li>
+                        <li>bcrypt</li>
+                        <li>PyCryptodome</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Database & Systems</h3>
+                    <ul class="skill-list">
+                        <li>SQLite</li>
+                        <li>Socket Programming</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Problem-solving</li>
+                        <li>Team collaboration</li>
+                        <li>Adaptability</li>
+                        <li>Project Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="certifications" style="background-color: #f0f2f5;">
+        <div class="container">
+            <h2>Certifications</h2>
+            
+            <div class="cert-card">
+                <h3>Ethical Hacking Essentials</h3>
+                <p class="cert-date">Coursera, November 2024</p>
+            </div>
+            
+            <div class="cert-card">
+                <h3>Mastering Data Structures and Algorithms</h3>
+                <p class="cert-date">Board Infinity, June 2024</p>
+            </div>
+            
+            <div class="cert-card">
+                <h3>ChatGPT Advanced Data Analysis</h3>
+                <p class="cert-date">Coursera, April 2024</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <h3>Bachelor of Technology (B.Tech) – Computer Science and Engineering</h3>
+                <p class="education-institution">Lovely Professional University, Punjab</p>
+                <div class="education-details">
+                    <span>August 2022 – Present</span>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <h3>Intermediate (Humanities)</h3>
+                <p class="education-institution">Sri Chaitanya Junior College, Bongloor</p>
+                <div class="education-details">
+                    <span>July 2020 – March 2022</span>
+                    <span>68%</span>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <h3>Matriculation (10th Grade)</h3>
+                <p class="education-institution">Sri Chaitanya Techno School, Hayath Nagar</p>
+                <div class="education-details">
+                    <span>June 2017 – April 2020</span>
+                    <span>10 GPA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="activities" style="background-color: #f0f2f5;">
+        <div class="container">
+            <h2>Co-Curricular Activities</h2>
+            
+            <div class="activity-item">
+                <h3>Hackathon Participation</h3>
+                <p>Participated in a Hackathon at Lovely Professional University (May 2023)</p>
+            </div>
+            
+            <div class="activity-item">
+                <h3>Workshop on AWS Cloud Services</h3>
+                <p>Attended a workshop to learn about cloud computing and AWS services (August 2024)</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3>Connect With Me</h3>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="mailto:vanamaladurgaprasad@outlook.com">Email</a>
+            </div>
+            <p style="margin-top: 2rem;">© 2025 Durga Prasad Vanamala. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add your profile image dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileImage = document.querySelector('.profile-image');
+            if (profileImage) {
+                // Replace with actual image URL when the site is deployed
+                // For now using a placeholder
+                profileImage.src = "/api/placeholder/400/400";
+                // Note: In a real deployment, you would upload your image file
+                // and replace the src with the actual path to your image
+            }
+        });
+    </script>
+</body>
+</html>
